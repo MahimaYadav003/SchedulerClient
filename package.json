@@ -1,5 +1,6 @@
 {
   "name": "scheduler",
+  "homepage": "https://mahimayadav003.github.io/SchedulerClient/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
