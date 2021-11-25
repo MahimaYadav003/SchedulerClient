@@ -1,1 +1,1 @@
-export const SCHEDULER_HOST="http://localhost:8086/scheduler";
+export const SCHEDULER_HOST="https://schedulerspringboot.herokuapp.com/";
