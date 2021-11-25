@@ -1,6 +1,6 @@
 {
   "name": "scheduler",
-  "homepage": "https://mahimayadav003.github.io/SchedulerClient/",
+  "homepage": "https://schedulerdata.herokuapp.com/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
