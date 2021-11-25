@@ -1,0 +1,149 @@
+.label-css{
+    float:left;
+    width:50px;
+    display:inline-block;
+}
+
+
+.scheduler{
+    margin-bottom:15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.student{
+    margin-left: 200px;
+}
+
+.photo {
+    float:right;
+    height: 660px;
+    width: 600px; 
+}
+
+.photo2 {
+    height: 340px;
+    width: 600px; 
+}
+
+.input-css{
+    border:1px solid #cfcbcb;
+    -webkit-appearance:none;
+    -ms-appearance:none;
+    -moz-appearance:none;
+    appearance:none;
+    background:#fffefe;
+    padding:15px;
+    border-radius:3px;
+    outline: black;
+    margin-bottom: 20px;
+    width: 400px;
+    font:sans-serif;
+    white-space: pre-wrap;
+    height: 20px;
+}
+
+button:disabled{
+    background-color: #f0eeee;
+    color: #969494;
+}
+
+.input-css:focus{
+    border-color:dodgerBlue;
+    box-shadow: 0 0 8px 0 dodgerblue;
+}
+    
+
+button:disabled{
+    background-color: #f0eeee;
+    color: #969494;
+}
+
+.drop{
+    width:39.5em;
+    margin-bottom: 15px;
+    color: black;
+    font: sans-serif;
+}
+
+.title{
+    margin-top: 20px;
+    margin-bottom: 15px;
+    font-weight: bolder;
+    font:sans-serif;
+}
+
+.heading{
+    margin-bottom: 100px;
+    font-weight: bold;
+    font:sans-serif;
+    font-size: 30px;
+    color:white;
+}
+
+.labelstyle{
+    
+    font-weight: bold;
+    font:sans-serif;
+    float: left;
+    width: 150px;
+    display: inline-block;
+    color:white;
+}
+
+.home{
+    font-weight: bold;
+    font:sans-serif;
+    float: left;
+    width: 150px;
+    display: inline-block;
+}
+
+.submit{
+    padding: 6px 12px;
+    font: 16px lato,sans-serif;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    border-radius: 20px;
+    border:none;
+    text-transform: uppercase;
+    cursor:pointer;
+    background-color: green;
+    color: white;
+}
+
+.table{
+    margin-left: 100px;
+    margin-right: auto;
+    margin-top:40px;
+}
+.tableTd{
+    border: 1px solid #ddd;
+    padding: 8px;
+    font-size: large;
+}
+
+.tableTh{
+    font-size: larger;
+    border: 1px solid #ddd;
+    padding: 8px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+
+.submit:focus{
+    padding: 6px 12px;
+    font: 16px lato,sans-serif;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    border-radius: 20px;
+    border:none;
+    text-transform: uppercase;
+    cursor:pointer;
+    background-color: rgb(141, 190, 141);
+    color: white;
+    transition: all .3s ease
+}
