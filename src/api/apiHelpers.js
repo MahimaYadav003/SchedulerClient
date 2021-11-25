@@ -6,6 +6,11 @@ export function get(baseUrl,url){
     .catch(onError);
 }
 
+export function post(baseUrl,url,body){
+    console.log(body);
+    return save(baseUrl,url,body,'post')
+}
+
 export function deleteRequest(baseUrl,url){
     return axios.delete(`${baseUrl}${url}`)
     .then(onSuccess)
@@ -22,10 +27,7 @@ export function save(baseUrl,url,body,method){
     .catch(onError);
 }
 
-export function post(baseUrl,url,body){
-    console.log(body);
-    return save(baseUrl,url,body,'post')
-}
+
 
 export function put(baseUrl,url,body){
     return save(baseUrl,url,body,'put')
