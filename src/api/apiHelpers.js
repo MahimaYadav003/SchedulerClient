@@ -1,20 +1,18 @@
 import axios from'axios';
 
+//axios for caaling the end point 
+
+//get for fetching the details 
 export function get(baseUrl,url){
     return axios.get(`${baseUrl}${url}`)
     .then(onSuccess)
     .catch(onError);
 }
 
+//post for entering the details
 export function post(baseUrl,url,body){
     console.log(body);
     return save(baseUrl,url,body,'post')
-}
-
-export function deleteRequest(baseUrl,url){
-    return axios.delete(`${baseUrl}${url}`)
-    .then(onSuccess)
-    .catch(onError);
 }
 
 export function save(baseUrl,url,body,method){
@@ -25,12 +23,6 @@ export function save(baseUrl,url,body,method){
     })
     .then(onSuccess)
     .catch(onError);
-}
-
-
-
-export function put(baseUrl,url,body){
-    return save(baseUrl,url,body,'put')
 }
 
 function onSuccess(response){

@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import './Scheduler.css';
-import 'antd/dist/antd.css';
+import 'antd/dist/antd.css'; // antd css for buttons , dropdown and notifications
 import background from '../images/home.png'
 import background2 from '../images/student.png'
 import background3 from '../images/detail.png'
 import { Popconfirm, notification, Select } from "antd";
 
+//api call fir getting and adding student details
 import { apiAddContent, apiGetDetails } from '../api/schedulerApi.js';
 const { Option } = Select;
 function Scheduler() {
@@ -27,27 +28,30 @@ function Scheduler() {
 
     function handleChange(value) {
         setPreference(value);
-        console.log(`selected ${value}`);
     }
     function handleClassChange(value) {
         setclassroom(value);
-        console.log(`selected ${value}`);
     }
     function handleRoleChange(value) {
         getStudentDetails()
         setRole(value);
-        console.log(`selected ${value}`);
     }
+
+    //notification that will be popped on submiting form
     const onSuccess = (e) => {
         setTimeout(() => {
             notification.success({ description: "Your Response have been saved", placement: 'topRight' });
         })
     }
 
+    //notification when you choose not to submit the form
     function cancelSubmit(e) {
         notification.warning({ description: 'Did not save response', placement: 'topRight' })
     }
+
+    //will call the api that will add the student details in the backend
     function AddStudent() {
+        //student object that we will be sending to add in the student table
         const student = {
             name: name,
             rollno: rollno,
@@ -71,28 +75,32 @@ function Scheduler() {
             })
     }
 
+    //function to fetch the student details who chose offline mode and are from the selected class
     function getStudentDetails() {
         setStudentLoading(true);
         apiGetDetails()
             .then(response => {
                 let arr = [];
-                let seatno=0;
-                response.map((student) =>{
-                if(seatno+2<50)
-                if(student.preference==="Offline Mode" && student.sClass===classroom){
-                    
-                        let ob = {
-                            name: student.name,
-                            rollno:student.rollno,
-                            sClass:student.sClass,
-                            preference:student.preference,
-                            seatno:seatno+2
+                let seatno = 0;
+                response.map((student) => {
+                    //first 50/2 students will be accepted for the offline classes
+                    //students will sit on one seat living the other empty as a precaution for covid time
+                    //allocating seat in next 2 
+                    if (seatno + 2 < 50)
+                        if (student.preference === "Offline Mode" && student.sClass === classroom) {
+
+                            let ob = {
+                                name: student.name,
+                                rollno: student.rollno,
+                                sClass: student.sClass,
+                                preference: student.preference,
+                                seatno: seatno + 2
                             }
                             arr.push(ob)
-                            seatno=seatno+2
-                }
-                
-            })
+                            seatno = seatno + 2
+                        }
+
+                })
                 setStudentList(arr);
                 setStudentLoading(false);
             })
@@ -101,6 +109,8 @@ function Scheduler() {
                 setStudentLoading(false);
             })
     }
+
+    //fcuntion for the the particular role (student or teacher)
     function selectRole() {
         return (
             <div
@@ -112,22 +122,26 @@ function Scheduler() {
                     width: '100vw',
                     height: '100vh'
                 }}>
-                    {selectClass()}
+                {selectClass()}
                 <label className='labelstyle'
                     style={{
                         marginLeft: "500px",
                     }}
                 >Select Role</label>
-                
-                <Select placeholder="Select Role" style={{ width: 200}} onChange={handleRoleChange}>
+
+                <Select placeholder="Select Role" style={{ width: 200 }} onChange={handleRoleChange}>
                     <Option value="Student">Student</Option>
                     <Option value="Teacher">Teacher</Option>
                 </Select>
             </div>
         )
     }
+
+    //home page were you will be allowed to select whether you are student or teacher and if role id already selected 
+    //if you select student then it will lead you to students form page 
+    //else it will lead you to teachers page 
     function showRole() {
-        if (role === "Select Role" || classroom===" ") {
+        if (role === "Select Role" || classroom === " ") {
             return (
                 <div>
                     {selectRole()}
@@ -136,18 +150,18 @@ function Scheduler() {
         }
         else if (role === "Student") {
             return (
-                <div 
-                style={{
-                    backgroundImage: `url(${background2})`,
-                    backgroundPosition: 'center',
-                    backgroundSize: 'cover',
-                    backgroundRepeat: 'no-repeat',
-                    width: '100vw',
-                    height: '100vh'
-                }}
+                <div
+                    style={{
+                        backgroundImage: `url(${background2})`,
+                        backgroundPosition: 'center',
+                        backgroundSize: 'cover',
+                        backgroundRepeat: 'no-repeat',
+                        width: '100vw',
+                        height: '100vh'
+                    }}
                 >
-                    <div 
-                    style={{marginLeft:'40px'}}>
+                    <div
+                        style={{ marginLeft: '40px' }}>
                         <b className='heading'>Weekly Class Scheduler</b>
                         {console.log(students[0])}
                         {selectMode()}
@@ -164,31 +178,37 @@ function Scheduler() {
             );
         }
     }
+
+    //on clickng home button it will lead you to home page
     function handleHome() {
         getStudentDetails()
         setRole("Select Role");
         selectRole();
     }
-    function particularClass(){
-        return(
+
+    //function that will call the student api and it will give the student details who chose offline mode
+    function particularClass() {
+        return (
             <div>
                 {seeStudentDetails()}
             </div>
         )
     }
+
+    //funtion to show the fetched student details on the ui inside a table
     function seeStudentDetails() {
-        
+
         return (
-            
-            <div 
-            style={{
-                backgroundImage: `url(${background3})`,
-                backgroundPosition: 'center',
-                backgroundSize: 'cover',
-                backgroundRepeat: 'no-repeat',
-                width: '100vw',
-                height: '100vh'
-            }}
+
+            <div
+                style={{
+                    backgroundImage: `url(${background3})`,
+                    backgroundPosition: 'center',
+                    backgroundSize: 'cover',
+                    backgroundRepeat: 'no-repeat',
+                    width: '100vw',
+                    height: '100vh'
+                }}
             >
                 <h1 className="student">Student Details</h1>
                 <table className="table">
@@ -199,7 +219,7 @@ function Scheduler() {
                         <th className="tableTh">Preference</th>
                         <th className="tableTh">SeatNo</th>
                     </tr>
-                    
+
                     {students.map((student) =>
                         <tr>
                             <td className="tableTd">{student.rollno}</td>
@@ -208,7 +228,7 @@ function Scheduler() {
                             <td className="tableTd">{student.preference}</td>
                             <td className="tableTd">{student.seatno}</td>
                         </tr>
-                    
+
                     )}
                 </table>
                 <div>
@@ -223,6 +243,7 @@ function Scheduler() {
 
 
 
+    //weekly form where students will fill their preference and inout their name and roll no and click the submit button
     function SubmitButton() {
         return (
             <div className='title'>
@@ -267,6 +288,7 @@ function Scheduler() {
         );
     }
 
+    //droopdown which will show which mode student want to choose
     function selectMode() {
         return (
             <>
@@ -281,6 +303,7 @@ function Scheduler() {
         )
     }
 
+    //dropdown which will allow student to choose which class they are in 
     function selectClass() {
         return (
             <>
@@ -289,7 +312,7 @@ function Scheduler() {
                         marginLeft: "500px",
                         marginTop: "100px"
                     }}>Select Class</label>
-                    <Select placeholder="Select Class" style={{ width: 200, marginRight: '20px', marginTop: "100px" }}  onChange={handleClassChange}>
+                    <Select placeholder="Select Class" style={{ width: 200, marginRight: '20px', marginTop: "100px" }} onChange={handleClassChange}>
                         <Option value="Class I">Class I</Option>
                         <Option value="Class II">Class II</Option>
                         <Option value="Class III">Class III</Option>

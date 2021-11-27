@@ -1,3 +1,46 @@
+# link of hosted react app (hosted on heroku)
+
+https://schedulerdata.herokuapp.com/
+
+# link of hosted springboot application (hosted on heroku)
+
+https://schedulerspringboot.herokuapp.com/
+
+# react app git hub repo link 
+
+https://github.com/MahimaYadav003/SchedulerClient
+
+# soring boot application git hub repo link 
+
+https://github.com/MahimaYadav003/SchedulerSpringboot
+
+# About the web app 
+
+installed antd for the css of drop down , buttons , notidication , popups 
+
+made different folders for containers, api and images and file for css that are used for the react app
+
+start of the applicatio leads to home page in which you choose the a particular class and the role (student/tacher)
+
+after selecting these two values depending on what you choose ypu will be directed to that particular page 
+
+on selecting student you will be directed to weekly scheduler form in which you will be enabled to choose what is your
+preference and enter your name and roll number and finally submit you form and you will also find a home button on 
+clicking thatyou will be directed back to the home page oncliking submit button you will see a pop up in which you will 
+get the option whther you are sure to submit the form 
+
+on selecting teacher role you will be directed to student detail page where you will see students details in tabular format 
+who chose offline mode and also the seat number that are allocated to the students and if you want to return back to the 
+home page you will also find a home button at the bottom 
+
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
